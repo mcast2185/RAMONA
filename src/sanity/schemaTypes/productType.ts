@@ -34,6 +34,7 @@ export const productType = defineType({
       name: "description",
       title: "Description",
       type: "blockContent",
+      
     }),
     defineField({
       name: "price",
@@ -59,6 +60,7 @@ export const productType = defineType({
       title: "name",
       media: "image",
       subtitle: "price",
+      
     },
     prepare(select) {
       return {

@@ -45,6 +45,12 @@ export const designType = defineType({
       name: 'description',
       type: 'blockContent',
     }),
+    defineField({
+      name: "price",
+      title: "Price",
+      type: "number",
+      validation: (Rule) => Rule.required().min(0),
+    }),
   ],
   preview: {
     select: {
