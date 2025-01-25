@@ -1,10 +1,12 @@
 import ProductsView from "@/components/ProductsView";
 import { Button } from "@/components/ui/button";
 import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
+import { getAllDesigns } from "@/sanity/lib/products/getAllDesigns";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
 
 export default async function Home() {
   const products = await getAllProducts();
+  const designs = await getAllDesigns();
   const categories = await getAllCategories();
 
   return (
@@ -12,7 +14,7 @@ export default async function Home() {
       Hello world!
       
       <div className='flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4'>
-        <ProductsView categories={categories} products={products}/>
+        <ProductsView categories={categories} designs={designs} products={products}/>
       </div>
     </div>
   );

@@ -8,42 +8,33 @@ export const designType = defineType({
   icon: ImagesIcon,
   fields: [
     defineField({
-      name: 'title',
-      type: 'string',
+      name: "name",
+      title: "Design Type",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "name",
+        maxLength: 96,
       },
     }),
     defineField({
-      name: 'mainImage',
-      type: 'image',
+      name: "image",
+      title: "Product Image",
+      type: "image",
       options: {
-        hotspot: true,
+        hotspot: true
       },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }
-      ]
     }),
     defineField({
-      name: 'categories',
-      type: 'array',
-      of: [defineArrayMember({type: 'reference', to: {type: 'category'}})],
-    }),
-    defineField({
-      name: 'publishedAt',
-      type: 'datetime',
-    }),
-    defineField({
-      name: 'description',
-      type: 'blockContent',
+      name: "description",
+      title: "Description",
+      type: "blockContent",
+      
     }),
     defineField({
       name: "price",
@@ -51,19 +42,31 @@ export const designType = defineType({
       type: "number",
       validation: (Rule) => Rule.required().min(0),
     }),
+    defineField({
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{type: "reference", to: {type: "category"}}],
+    }),
+    defineField({
+      name: "stock",
+      title: "Stock",
+      type: "number",
+      validation: (Rule) => Rule.min(0),
+    }),
   ],
   preview: {
     select: {
-      title: "title",
-      media: "mainImage",
+      title: "name",
+      media: "image",
       subtitle: "price",
+      
     },
     prepare(select) {
       return {
         title: select.title,
-        subtitle: "description",
-        media: select.media,
-        description: "blockContent",
+        subtitle: `$${select.subtitle}`,
+        media: select.media
       };
     },
   },
