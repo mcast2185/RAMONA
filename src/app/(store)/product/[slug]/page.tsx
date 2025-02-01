@@ -1,4 +1,7 @@
+import AddToBasketButton from "@/components/ui/AddToBasketButton";
+import { Button } from "@/components/ui/button";
 import { imageUrl } from "@/lib/imageUrl";
+import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
 import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
@@ -8,20 +11,26 @@ import { notFound } from "next/navigation";
 const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
   const {slug} = await params;
   const product = await getProductBySlug(slug);
+  const design = await getDesignBySlug(slug);
 
 
   if (!product) {
     return notFound();
   };
 
+  // if (!design) {
+  //   return notFound();
+  // };
 
-  const isOutOfStock = product.stock != null && product.stock <= 0;
+
+  const productIsOutOfStock = product.stock != null && product.stock <= 0;
+  // const designIsOutOfStock = design.stock != null && design.stock <= 0;
 
   return (
     <div className='container mx-auto px-4 py-8'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
         <div className={`relative aspect-square overflow-hidden 
-          rounded-lg shadow-lg ${isOutOfStock ? "opacity-50" : ""}`}>
+          rounded-lg shadow-lg ${productIsOutOfStock ? "opacity-50" : ""}`}>
           {product.image && (
             <Image
               className="object-cover transition-transform duration-700 hover:scale-105 ease-out"
@@ -31,7 +40,7 @@ const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
               // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
-          {isOutOfStock && (
+          {productIsOutOfStock && (
             <div className='absolute inset-0 flex items-center justify-center bg-black bg-opacity-50'>
               <span className='text-white font-bold text-lg'>
                 Out of Stock
@@ -54,8 +63,10 @@ const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
               )}
             </div>
           </div>
+          <div className='mt-6'>
+            <AddToBasketButton product={product} design={design}></AddToBasketButton>
+          </div>
         </div>
-
       </div>
     </div>
   );
