@@ -1,3 +1,4 @@
+import AddToBasketDesignButton from "@/components/ui/AddToBasketDesignButton";
 import { imageUrl } from "@/lib/imageUrl";
 import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
 import { PortableText } from "next-sanity";
@@ -54,8 +55,10 @@ const DesignPage = async ({params}: { params: Promise<{slug: string}>}) => {
               )}
             </div>
           </div>
+          <div className='mt-6'>
+            <AddToBasketDesignButton design={design} ></AddToBasketDesignButton>
+          </div>
         </div>
-
       </div>
     </div>
   );

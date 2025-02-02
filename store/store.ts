@@ -35,10 +35,10 @@ export const useProductBasketStore = create<ProductBasketState>()(
   persist((set, get) => ({
     items: [],
     addProductItem: (product: Product) => set((state: ComponentState) => {
-      const existingItem = state.items.find((item: BasketItem) => item.product._id === product._id);
+      const existingItem = state.items.find((item: BasketItem) => item.product?._id === product._id);
       if (existingItem) {
         return {
-          items: state.items.map((item: BasketItem) => item.product._id === product._id ? {...item, quantity: item.quantity + 1}: item)
+          items: state.items.map((item: BasketItem) => item.product?._id === product._id ? {...item, quantity: item.quantity + 1}: item)
         };
       } else {
         return {items: [...state.items, { product, quantity: 1}]};
@@ -46,7 +46,7 @@ export const useProductBasketStore = create<ProductBasketState>()(
     }),
     removeProductItem: (productId: string) => set((state: ComponentState) => ({
       items: state.items.reduce((acc:BasketItem[], item: BasketItem) => {
-        if (item.product._id === productId) {
+        if (item.product?._id === productId) {
           if (item.quantity > 1) {
             acc.push({...item, quantity: item.quantity -1});
           }
@@ -61,7 +61,7 @@ export const useProductBasketStore = create<ProductBasketState>()(
       return get().items.reduce((total: number, item: BasketItem) => total + (item.product.price ?? 0) * item.quantity, 0);
     },
     getProductItemCount: (productId) => {
-      const item = get().items.find(item => item.product._id === productId);
+      const item = get().items.find(item => item.product?._id === productId);
       return item ? item.quantity : 0;
     },
     getGroupedItems: () => get().items,
@@ -75,10 +75,10 @@ export const useDesignBasketStore = create<DesignBasketState>()(
   persist((set, get) => ({
     items: [],
     addDesignItem: (design: Design) => set((state: ComponentState) => {
-      const existingItem = state.items.find((item: BasketItem) => item.design._id === design._id);
+      const existingItem = state.items.find((item: BasketItem) => item.design?._id === design._id);
       if (existingItem) {
         return {
-          items: state.items.map((item: BasketItem) => item.design._id === design._id ? {...item, quantity: item.quantity + 1}: item)
+          items: state.items.map((item: BasketItem) => item.design?._id === design._id ? {...item, quantity: item.quantity + 1}: item)
         };
       } else {
         return {items: [...state.items, { design, quantity: 1}]};
@@ -86,7 +86,7 @@ export const useDesignBasketStore = create<DesignBasketState>()(
     }),
     removeDesignItem: (designId: string) => set((state: ComponentState) => ({
       items: state.items.reduce((acc:BasketItem[], item: BasketItem) => {
-        if (item.design._id === designId) {
+        if (item.design?._id === designId) {
           if (item.quantity > 1) {
             acc.push({...item, quantity: item.quantity -1});
           }
@@ -101,7 +101,7 @@ export const useDesignBasketStore = create<DesignBasketState>()(
       return get().items.reduce((total: number, item: BasketItem) => total + (item.design.price ?? 0) * item.quantity, 0);
     },
     getDesignItemCount: (designId) => {
-      const item = get().items.find(item => item.product._id === designId);
+      const item = get().items.find(item => item.design?._id === designId);
       return item ? item.quantity : 0;
     },
     getGroupedItems: () => get().items,

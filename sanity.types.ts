@@ -464,6 +464,69 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   stock?: number;
 }>;
 
+// Source: ./src/sanity/lib/products/getDesignBySlug.ts
+// Variable: DESIGN_BY_ID_QUERY
+// Query: *[          _type == "design" && slug.current == $slug      ] | order(name asc) [0]
+export type DESIGN_BY_ID_QUERYResult = {
+  _id: string;
+  _type: "design";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal" | "p";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  price?: number;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  stock?: number;
+} | null;
+
 // Source: ./src/sanity/lib/products/getDesignsByCategory.tsx
 // Variable: DESIGNS_BY_CATEGORY_QUERY
 // Query: *[        _type == "design"         && references(*[_type == "category" && slug.current == $categorySlug]._id)      ] | order(name asc)
@@ -660,6 +723,7 @@ declare module "@sanity/client" {
     "\n      *[\n          _type == \"category\"\n      ] | order(name asc)\n    ": ALL_CATEGORIES_QUERYResult;
     "\n      *[\n          _type == \"design\" \n      ] | order(name asc)\n    ": ALL_DESIGNS_QUERYResult;
     "\n      *[\n          _type == \"product\" \n      ] | order(name asc)\n    ": ALL_PRODUCTS_QUERYResult;
+    "\n      *[\n          _type == \"design\" && slug.current == $slug\n      ] | order(name asc) [0]\n    ": DESIGN_BY_ID_QUERYResult;
     "\n      *[\n        _type == \"design\" \n        && references(*[_type == \"category\" && slug.current == $categorySlug]._id)\n      ] | order(name asc)\n    ": DESIGNS_BY_CATEGORY_QUERYResult;
     "\n      *[\n          _type == \"product\" && slug.current == $slug\n      ] | order(name asc) [0]\n    ": PRODUCT_BY_ID_QUERYResult;
     "\n      *[\n        _type == \"product\" \n        && references(*[_type == \"category\" && slug.current == $categorySlug]._id)\n      ] | order(name asc)\n    ": PRODUCTS_BY_CATEGORY_QUERYResult;

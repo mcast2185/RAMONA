@@ -1,4 +1,4 @@
-import AddToBasketButton from "@/components/ui/AddToBasketButton";
+import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
 import { Button } from "@/components/ui/button";
 import { imageUrl } from "@/lib/imageUrl";
 import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
@@ -64,7 +64,7 @@ const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
             </div>
           </div>
           <div className='mt-6'>
-            <AddToBasketButton product={product} design={design}></AddToBasketButton>
+            <AddToBasketProductButton product={product} ></AddToBasketProductButton>
           </div>
         </div>
       </div>

@@ -6,18 +6,17 @@ import { Design, Product } from "../../../sanity.types";
 import { useDesignBasketStore, useProductBasketStore } from "../../../store/store";
 
 
-interface AddToBasketButtonProps {
+interface AddToBasketProductButtonProps {
   product: Product;
-  design: Design;
   disabled?: boolean;
 };
 
-const AddToBasketButton = ({ product, design, disabled }: AddToBasketButtonProps) => {
-  const { addDesignItem, removeDesignItem, getDesignItemCount } = useDesignBasketStore();
+const AddToBasketProductButton = ({ product, disabled }: AddToBasketProductButtonProps) => {
+
   const { addProductItem, removeProductItem, getProductItemCount } = useProductBasketStore();
   
   const itemProductCount = getProductItemCount(product._id);
-  const itemDesignCount = getDesignItemCount(design._id);
+
 
 
   const [isClient, setIsClient] = useState(false);
@@ -36,8 +35,7 @@ const AddToBasketButton = ({ product, design, disabled }: AddToBasketButtonProps
   return (
     
     <div className='flex items-center justify-center space-x-2'>
-    {product &&  (
-      <div className=''>
+
        
       
       <button
@@ -66,42 +64,9 @@ const AddToBasketButton = ({ product, design, disabled }: AddToBasketButtonProps
           +
         </span>
       </button>
-        </div>
-      )}
 
-      {design && (
-        <div className=''>
-          <button
-            onClick={() => {
-              if (design) {
-                removeDesignItem(design._id)
-              };
-
-            }}
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200
-            ${itemDesignCount === 0 ? "bg-gray-100 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300"}`}
-            disabled={itemDesignCount === 0 || disabled}
-          >
-            <span className={`text-xl font-bold ${itemDesignCount === 0 ? "text-gray-400" : "text-gray-600"}`}>
-              -
-            </span>
-          </button>
-          <span className='w-8 text-center font-semibold'>
-            {itemDesignCount}
-          </span>
-          <button
-            onClick={() => addDesignItem(design)}
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200
-            ${itemDesignCount === 0 ? "bg-gray-100 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300"}`}
-            disabled={disabled}>
-            <span className="text-xl font-bold text-white">
-              +
-            </span>
-          </button>
-        </div>
-      )}
     </div>
   );
 };
 
-export default AddToBasketButton;
+export default AddToBasketProductButton;
