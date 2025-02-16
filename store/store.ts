@@ -19,7 +19,6 @@ interface ProductBasketState {
   getGroupedItems: () => BasketItem[];
 };
 
-
 interface DesignBasketState {
   items: BasketItem[];
   addDesignItem: (design: Design) => void;
@@ -75,6 +74,7 @@ export const useDesignBasketStore = create<DesignBasketState>()(
   persist((set, get) => ({
     items: [],
     addDesignItem: (design: Design) => set((state: ComponentState) => {
+
       const existingItem = state.items.find((item: BasketItem) => item.design?._id === design._id);
       if (existingItem) {
         return {
@@ -98,7 +98,7 @@ export const useDesignBasketStore = create<DesignBasketState>()(
     })),
     clearBasket: () => set({ items: []}),
     getTotalPrice: () => {
-      return get().items.reduce((total: number, item: BasketItem) => total + (item.design.price ?? 0) * item.quantity, 0);
+      return get().items.reduce((total: number, item: BasketItem) => total + (item.design?.price ?? 0) * item.quantity, 0);
     },
     getDesignItemCount: (designId) => {
       const item = get().items.find(item => item.design?._id === designId);
