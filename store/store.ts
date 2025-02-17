@@ -57,7 +57,7 @@ export const useProductBasketStore = create<ProductBasketState>()(
     })),
     clearBasket: () => set({ items: []}),
     getTotalPrice: () => {
-      return get().items.reduce((total: number, item: BasketItem) => total + (item.product.price ?? 0) * item.quantity, 0);
+      return get().items.reduce((total: number, item: BasketItem) => total + (item.product?.price ?? 0) * item.quantity, 0);
     },
     getProductItemCount: (productId) => {
       const item = get().items.find(item => item.product?._id === productId);

@@ -28,19 +28,19 @@ function Header() {
           ANOMAR
         </Link>
         <div className='flex items-center space-x-4 mt-4 sm:mt-0 flex-1 sm:flex-none'>
-          <Link href="/basket" className=''>
-            <TrolleyIcon className=''/>
+          <Link href="/basket" className='flex items-center'>
+            <TrolleyIcon className='w-5 h-5'/>{' '}  
             <span className=''>
-            my basket
+            My basket
             </span>
           </Link>
 
           <ClerkLoaded>
             <SignedIn>
-              <Link href="/orders" className=''>
+              <Link href="/orders" className='flex items-center'>
                 <PackageIcon className=''/>
                 <span className=''>
-                my orders
+                  my orders
                 </span>
               </Link>
             </SignedIn>

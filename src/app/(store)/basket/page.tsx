@@ -10,7 +10,7 @@ import { imageUrl } from '@/lib/imageUrl';
 import AddToBasketDesignButton from "@/components/ui/AddToBasketDesignButton";
 import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
 import { BasketItem, useDesignBasketStore, useProductBasketStore } from "../../../../store/store";
-import { Metadata } from "../../../../actions/createCheckoutSession";
+import { createCheckoutSession, Metadata } from "../../../../actions/createCheckoutSession";
 
 
 const BasketPage = () => {
@@ -39,7 +39,6 @@ const BasketPage = () => {
       ? groupedItems.push(groupedProductItems[idx]) : null;
     });
 
-    console.log(typeof groupedItems)
   },[]);
 
 
@@ -60,7 +59,7 @@ const BasketPage = () => {
         clerkUserId: user!.id,
       }
 
-      const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
+      const checkoutUrl = await createCheckoutSession(groupedProductItems, metadata);
 
       if (checkoutUrl) {
         window.location.href = checkoutUrl;
@@ -74,7 +73,19 @@ const BasketPage = () => {
   };
 
   
-  if (groupedDesignItems.length === 0 ) {
+  // if (groupedDesignItems.length === 0 ) {
+  //   return (
+  //     <div className='container mx-auto p-4 flex flex-col items-center justify-center min-h-[50vh]'>
+  //       <h1 className='text-2xl font-bold mb-6 text-gray-800'>
+  //         <p className='text-gray-600 text-lg'>
+  //           Your basket is empty.
+  //         </p>
+  //       </h1>
+  //     </div>
+  //   );
+  // };
+  
+  if (groupedProductItems.length === 0 ) {
     return (
       <div className='container mx-auto p-4 flex flex-col items-center justify-center min-h-[50vh]'>
         <h1 className='text-2xl font-bold mb-6 text-gray-800'>
@@ -97,7 +108,7 @@ const BasketPage = () => {
       <div className='flex flex-col lg:flex-row gap-8'>
         <div className='flex-grow'>
 
-          {groupedDesignItems?.map((item) => {
+          {/* {groupedDesignItems!.map((item) => {
             if (item.design) {
               return (
                 <div key={item.design?._id} 
@@ -135,15 +146,15 @@ const BasketPage = () => {
             if (item.product) {
               return <></>;
             };
-          })}
+          })} */}
 
-          {groupedProductItems?.map((item) => {
+          {groupedProductItems!.map((item) => {
             if (item.product) {
               return (
                 <div key={item.product?._id} 
                   className='mb-4 p-4 border rounded flex items-center justify-between'>
                   <div className='flex items-center cursor-pointer flex-1 min-w-0' 
-                    onClick={() => router.push(`/design/${item.product.slug?.current}`)}>
+                    onClick={() => router.push(`/design/${item.product?.slug?.current}`)}>
                     <div className='w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 mr-4'>
                       {item.product?.image && (
                         <Image
@@ -172,9 +183,9 @@ const BasketPage = () => {
                 </div>
               );
             };
-            if (item.design) {
-              return <></>;
-            };
+            // if (item.design) {
+            //   return <></>;
+            // };
           })}
         </div>
 
@@ -188,7 +199,7 @@ const BasketPage = () => {
             <p className='flex justify-between'>
               <span>Items:</span>
               <span>
-                {groupedItems.reduce((total, item) => total + item.quantity, 0)}
+                {groupedProductItems.reduce((total, item) => total + item.quantity, 0)}
               </span>
             </p>
             <p className='flex justify-between text-2xl font-bold border-t pt-2'>

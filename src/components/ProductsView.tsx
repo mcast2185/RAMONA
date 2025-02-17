@@ -22,7 +22,7 @@ const ProductsView = ({products, designs, categories}: ProductsViewProps) => {
         <div className=''>
           <ProductGrid products={products} />
           <hr className="w-1/2 sm:w-3/4"/>
-          <DesignGrid designs={designs} />
+          {/* <DesignGrid designs={designs} /> */}
         </div>
       </div>
     </div>
