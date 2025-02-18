@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import {backendClient} from "@/sanity/lib/backendClient";
 import { Metadata } from "../../../../actions/createCheckoutSession";
+import { imageUrl } from "@/lib/imageUrl";
 
 
 export async function POST(req: NextRequest) {
@@ -26,13 +27,14 @@ export async function POST(req: NextRequest) {
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+    console.log("Event constructed:", event);
   } catch (err) {
     console.error("Webhook verification failed:", err);
     return NextResponse.json({ error: `Webhook Error: ${err}`}, { status: 400});
   };
   
   if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
+    const session = event.data?.object as Stripe.Checkout.Session;
     
     try {
       const order = await createOrderInSanity(session);
@@ -59,11 +61,13 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
 
   const {orderNumber, customerName, customerEmail, clerkUserId} = metadata as Metadata;
   const lineItemsWithProduct = await stripe.checkout.sessions.listLineItems(id, {expand: ["data.price.product"]});
-  const sanityProducts = lineItemsWithProduct.data.map((item) => ({
+  const sanityProducts = lineItemsWithProduct?.data?.map((item, idx) => ({
     _key: crypto.randomUUID(),
     product: {
       _type: "reference",
       _ref: (item.price?.product as Stripe.Product)?.metadata?.id,
+      image: imageUrl((item.price?.product as Stripe.Product)?.images[idx]).url(),
+      name: (item.price?.product as Stripe.Product)?.name ?? "",
     },
     quantity: item.quantity || 0,
   }));
