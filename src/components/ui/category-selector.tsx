@@ -1,12 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Check, ChevronDown, ChevronsUpDown } from "lucide-react";
-
-import {Category} from "../../../sanity.types";
-import { cn } from "@/lib/utils";
-import { Button } from "./button";
 import {
   Command,
   CommandEmpty,
@@ -20,11 +13,13 @@ import {
   PopoverContent,
   PopoverTrigger 
 } from "./popover";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Check, ChevronsUpDown } from "lucide-react";
 
-
-
-
-
+import { cn } from "@/lib/utils";
+import { Button } from "./button";
+import {Category} from "../../../sanity.types";
 
 interface CategorySelectorProps {
   categories: Category[];

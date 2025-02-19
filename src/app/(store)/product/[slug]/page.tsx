@@ -1,30 +1,26 @@
-import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
-import { Button } from "@/components/ui/button";
-import { imageUrl } from "@/lib/imageUrl";
-import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
-import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { PortableText } from "next-sanity";
+
+import { imageUrl } from "@/lib/imageUrl";
+import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
+import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
+
+export const dynamic = "force-static";
+export const revalidate = 60;
 
 
-const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
+const ProductPage = async (
+  {params}: { params: Promise<{slug: string}>}
+) => {
   const {slug} = await params;
   const product = await getProductBySlug(slug);
-  const design = await getDesignBySlug(slug);
-
 
   if (!product) {
     return notFound();
   };
 
-  // if (!design) {
-  //   return notFound();
-  // };
-
-
   const productIsOutOfStock = product.stock != null && product.stock <= 0;
-  // const designIsOutOfStock = design.stock != null && design.stock <= 0;
 
   return (
     <div className='container mx-auto px-4 py-8'>
@@ -37,7 +33,6 @@ const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
               src={imageUrl(product.image).url()}
               alt={product.name ?? "Product image"}
               fill
-              // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
           {productIsOutOfStock && (
@@ -64,7 +59,7 @@ const ProductPage = async ({params}: { params: Promise<{slug: string}>}) => {
             </div>
           </div>
           <div className='mt-6'>
-            <AddToBasketProductButton product={product} ></AddToBasketProductButton>
+            <AddToBasketProductButton product={product} />
           </div>
         </div>
       </div>

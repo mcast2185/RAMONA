@@ -1,10 +1,10 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
+import {orderType} from './orderType';
+import {designType} from './designType';
 import {productType} from './productType';
 import {categoryType} from './categoryType';
 import {blockContentType} from './blockContentType';
-import {designType} from './designType';
-import {orderType} from './orderType';
 
 
 export const schema: { 

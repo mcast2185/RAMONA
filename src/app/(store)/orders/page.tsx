@@ -1,11 +1,13 @@
-import { currencyFormatter } from '@/sanity/lib/currencyFormatter';
-import { getMyOrders } from '@/sanity/lib/orders/getMyOrders';
-import { auth } from '@clerk/nextjs/server';
+import React from 'react'
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import React from 'react'
+import { auth } from '@clerk/nextjs/server';
+
 import { imageUrl } from '@/lib/imageUrl';
 import { Order } from '../../../../sanity.types';
+import { getMyOrders } from '@/sanity/lib/orders/getMyOrders';
+import { currencyFormatter } from '@/sanity/lib/currencyFormatter';
+
 
 async function Orders() {
   const {userId} = await auth();
@@ -29,7 +31,7 @@ async function Orders() {
               You have not placed any orders yet.
             </p>
           </div>
-        ) : (
+          ) : (
           <div className='space-y-4 sm:space-y-8'>
             {orders.map((order: Order) => (
               <div
@@ -54,8 +56,7 @@ async function Orders() {
                       </p>
                     </div>
                   </div>
-                
-
+              
                   <div className='flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center'>
                     <div className='flex items-center'>
                       <span className='text-sm mr-2'>
@@ -92,7 +93,8 @@ async function Orders() {
                         )}
                       </p>
                     </div>
-                  ) : null}
+                    ) : null
+                  }
                 </div>
 
                 <div className='px-4 py-3 sm:px-6 sm:py-4'>

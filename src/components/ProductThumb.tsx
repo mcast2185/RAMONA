@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { Product } from "../../sanity.types";
 import Image from "next/image";
+
 import { imageUrl } from "@/lib/imageUrl";
+import { Product } from "../../sanity.types";
+
 
 function ProductThumb({ product }: { product: Product }) {
   const isOutOfStock = product.stock != null && product.stock <= 0;
 
   // were going to remove the bg and text around the images. remove truncate css from product name h2 tag
-
   return (
     <Link href={`/product/${product.slug?.current}`}
       className={`group flex flex-col bg-white rounded-lg border border-gray-200 shadow-sm justify-center items-center p-1
@@ -34,15 +35,14 @@ function ProductThumb({ product }: { product: Product }) {
         <h2 className='text-lg font-semibold text-gray-800 '>
           {product.name}
         </h2>
-      <p className='my-2 text-sm text-gray-600 '>
-        {product.description
-          ?.map((block) => 
-            block._type === "block" 
-          ? block.children?.map((child) => child.text).join("") 
-          : ""
-        ).join(" ") || "No description available"
-      }
-      </p>
+        <p className='my-2 text-sm text-gray-600 '>
+          {product.description
+            ?.map((block) => 
+              block._type === "block" 
+            ? block.children?.map((child) => child.text).join("") 
+            : "").join(" ") || "No description available"
+          }
+        </p>
       </div>
     </Link>
   );

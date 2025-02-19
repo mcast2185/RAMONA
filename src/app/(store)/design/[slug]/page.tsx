@@ -1,20 +1,21 @@
-import AddToBasketDesignButton from "@/components/ui/AddToBasketDesignButton";
-import { imageUrl } from "@/lib/imageUrl";
-import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { PortableText } from "next-sanity";
+
+import { imageUrl } from "@/lib/imageUrl";
+import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
+import AddToBasketDesignButton from "@/components/ui/AddToBasketDesignButton";
 
 
-const DesignPage = async ({params}: { params: Promise<{slug: string}>}) => {
+const DesignPage = async (
+  {params}: { params: Promise<{slug: string}>}
+) => {
   const {slug} = await params;
   const design = await getDesignBySlug(slug);
-
 
   if (!design) {
     return notFound();
   };
-
 
   const isOutOfStock = design.stock != null && design.stock <= 0;
 
@@ -29,7 +30,6 @@ const DesignPage = async ({params}: { params: Promise<{slug: string}>}) => {
               src={imageUrl(design.image).url()}
               alt={design.name ?? "Product image"}
               fill
-              // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
           {isOutOfStock && (
@@ -56,7 +56,7 @@ const DesignPage = async ({params}: { params: Promise<{slug: string}>}) => {
             </div>
           </div>
           <div className='mt-6'>
-            <AddToBasketDesignButton design={design} ></AddToBasketDesignButton>
+            <AddToBasketDesignButton design={design}/>
           </div>
         </div>
       </div>

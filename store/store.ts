@@ -1,7 +1,8 @@
 import {create} from "zustand";
-import {persist} from "zustand/middleware";
-import { Design, Product } from "../sanity.types";
 import { ComponentState } from "react";
+import {persist} from "zustand/middleware";
+
+import { Design, Product } from "../sanity.types";
 
 export interface BasketItem {
   product: Product;

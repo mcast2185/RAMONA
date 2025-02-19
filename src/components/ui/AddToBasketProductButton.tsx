@@ -2,42 +2,31 @@
 
 import { useEffect, useState } from "react";
 
-import { Design, Product } from "../../../sanity.types";
-import { useDesignBasketStore, useProductBasketStore } from "../../../store/store";
-
+import { Product } from "../../../sanity.types";
+import { useProductBasketStore } from "../../../store/store";
 
 interface AddToBasketProductButtonProps {
   product: Product;
   disabled?: boolean;
 };
 
+
 const AddToBasketProductButton = ({ product, disabled }: AddToBasketProductButtonProps) => {
-
   const { addProductItem, removeProductItem, getProductItemCount } = useProductBasketStore();
-  
   const itemProductCount = getProductItemCount(product._id);
-
-
-
   const [isClient, setIsClient] = useState(false);
-
 
   // update yourself on current hydration and rehydration page rendering.
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-
   if (!isClient) {
     return null;
   };
 
   return (
-    
     <div className='flex items-center justify-center space-x-2'>
-
-       
-      
       <button
         onClick={() => {
           if (product) {
@@ -64,7 +53,6 @@ const AddToBasketProductButton = ({ product, disabled }: AddToBasketProductButto
           +
         </span>
       </button>
-
     </div>
   );
 };

@@ -1,12 +1,12 @@
 "use client";
 
-import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from '@clerk/nextjs'
-import { PackageIcon, TrolleyIcon } from '@sanity/icons';
 import Link from 'next/link';
+import { PackageIcon, TrolleyIcon } from '@sanity/icons';
+import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from '@clerk/nextjs'
+
 
 function Header() {
   const {user} = useUser();
-
   const createPassKey =  async () => {
     // this functionality will require us to pay on clerk
 
@@ -45,7 +45,6 @@ function Header() {
               </Link>
             </SignedIn>
 
-            
             {user ? (
               <div className='flex items-center space-x-2'>
                 <UserButton/>
@@ -58,7 +57,7 @@ function Header() {
                   </p>
                 </div>
               </div>
-            ): (
+              ): (
               <SignInButton mode='modal'/>
             )}
 
@@ -69,11 +68,12 @@ function Header() {
                 create a passkey now
               </button>
             )}
+
           </ClerkLoaded>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

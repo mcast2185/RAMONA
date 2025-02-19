@@ -1,5 +1,6 @@
-import {ImagesIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {ImagesIcon} from '@sanity/icons';
+import {defineArrayMember, defineField, defineType} from 'sanity';
+
 
 export const designType = defineType({
   name: 'design',

@@ -4,24 +4,29 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { CheckCircle2 } from 'lucide-react';
-// import { getSession } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
-
 
 import { Button } from '@/components/ui/button';
 import { useProductBasketStore } from '../../../../store/store';
 
 
-
 function Success() {
   const searchParams = useSearchParams();
   const orderNumber = searchParams.get("orderNumber");
+  const { removeProductItem } = useProductBasketStore();
   const clearBasket = useProductBasketStore((state) => state.clearBasket);
+  const groupedProductItems = useProductBasketStore((state) => state.getGroupedItems());
 
   useEffect(() => {
     if (orderNumber) {
       clearBasket();
     };
+
+    groupedProductItems.map((item) => {
+      if (item.product) {
+        removeProductItem(item.product._id);
+      };
+    });
   }, [orderNumber, clearBasket]);
 
   return (
@@ -51,18 +56,7 @@ function Success() {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
 export default Success;
-
-
-// export const getServerSideProps = async (context) => {
-//   const session = await getSession(context);
-
-//   return {
-//     props: {
-//       session
-//     }
-//   };
-// };

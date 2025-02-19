@@ -1,8 +1,9 @@
 "use client";
 
-import { Design } from "../../sanity.types";
 import { AnimatePresence, motion } from 'framer-motion';
+
 import DesignThumb from "./DesignThumb";
+import { Design } from "../../sanity.types";
 
 
 function DesignGrid({ designs }: { designs: Design[] }) {
@@ -23,7 +24,7 @@ function DesignGrid({ designs }: { designs: Design[] }) {
         </AnimatePresence>
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default DesignGrid;

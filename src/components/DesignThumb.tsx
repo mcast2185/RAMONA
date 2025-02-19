@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { Design } from "../../sanity.types";
 import Image from "next/image";
+
+import { Design } from "../../sanity.types";
 import { imageUrl } from "@/lib/imageUrl";
+
 
 function DesignThumb({ design }: { design: Design }) {
   const isOutOfStock = design.stock != null && design.stock <= 0;
 
   // were going to remove the bg and text around the images. remove truncate css from design name h2 tag
-
   return (
     <Link href={`/design/${design.slug?.current}`}
       className={`group flex flex-col bg-white rounded-lg border border-gray-200 shadow-sm justify-center items-center p-1

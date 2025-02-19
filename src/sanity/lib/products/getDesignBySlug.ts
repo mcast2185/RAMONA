@@ -1,5 +1,7 @@
 import { defineQuery } from "next-sanity";
+
 import { sanityFetch } from "../live";
+
 
 export const getDesignBySlug = async (slug: string) => {
   const DESIGN_BY_ID_QUERY = defineQuery(`
@@ -22,4 +24,4 @@ export const getDesignBySlug = async (slug: string) => {
     console.error("Error fetching design by ID: ", error);
     return null;
   };
-}
+};

@@ -5,8 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import {backendClient} from "@/sanity/lib/backendClient";
 import { Metadata } from "../../../../actions/createCheckoutSession";
-import { imageUrl } from "@/lib/imageUrl";
-import { currencyFormatter } from "@/sanity/lib/currencyFormatter";
 
 
 export async function POST(req: NextRequest) {
@@ -61,7 +59,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
 
   const {orderNumber, customerName, customerEmail, clerkUserId} = metadata as Metadata;
   const lineItemsWithProduct = await stripe.checkout.sessions.listLineItems(id, {expand: ["data.price.product"]});
-  const sanityProducts = lineItemsWithProduct?.data?.map((item, idx) => ({
+  const sanityProducts = lineItemsWithProduct?.data?.map((item) => ({
     _key: crypto.randomUUID(),
     product: {
       _type: "reference",

@@ -33,10 +33,6 @@ export async function createCheckoutSession(
       throw new Error("Some items do not have a price");
     };
 
-    // if (designsWithoutPrice.length > 0) {
-    //   throw new Error("Some items do not have a price");
-    // };
-
     const customers = await stripe.customers.list({
       email: metadata.customerEmail,
       limit: 1,

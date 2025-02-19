@@ -5,11 +5,13 @@ import { getProductsByCategory } from "@/sanity/lib/products/getProductsByCatego
 
 
 const CategoryPage = async (
-  {params}: {params: Promise<{slug: string}>}) => {
+  {params}: {params: Promise<{slug: string}>}
+) => {
   const {slug} = await params;  
-  const products = await getProductsByCategory(slug);
-  const designs = await getDesignsByCategory(slug);
   const categories = await getAllCategories();
+  const designs = await getDesignsByCategory(slug);
+  const products = await getProductsByCategory(slug);
+
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4">
       <div className='bg-white p-8 rounded-lg shadow-md w-full max-w-4xl'>

@@ -1,6 +1,7 @@
 import { defineQuery } from 'next-sanity';
-import React from 'react'
+
 import { sanityFetch } from '../live';
+
 
 export const getProductsByCategory = async (categorySlug: string) => {
   const PRODUCTS_BY_CATEGORY_QUERY = defineQuery(`

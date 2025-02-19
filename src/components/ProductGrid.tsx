@@ -1,8 +1,10 @@
 "use client";
 
-import {Product} from "../../sanity.types";
 import { AnimatePresence, motion } from 'framer-motion';
+
 import ProductThumb from "./ProductThumb";
+import {Product} from "../../sanity.types";
+
 
 function ProductGrid({products}: {products: Product[]}) {
   // remove gap an margin once integrated and remove css from motion.div
@@ -22,7 +24,7 @@ function ProductGrid({products}: {products: Product[]}) {
         </AnimatePresence>
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default ProductGrid;

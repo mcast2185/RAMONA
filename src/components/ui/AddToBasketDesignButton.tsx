@@ -5,33 +5,27 @@ import { useEffect, useState } from "react";
 import { Design } from "../../../sanity.types";
 import { useDesignBasketStore, useProductBasketStore } from "../../../store/store";
 
-
 interface AddToBasketDesignButtonProps {
   design: Design;
   disabled?: boolean;
 };
 
-const AddToBasketDesignButton = ({ design, disabled }: AddToBasketDesignButtonProps) => {
-  const { addDesignItem, removeDesignItem, getDesignItemCount } = useDesignBasketStore();
 
+const AddToBasketDesignButton = ({ design, disabled }: AddToBasketDesignButtonProps) => {
+  const [isClient, setIsClient] = useState(false);
+  const { addDesignItem, removeDesignItem, getDesignItemCount } = useDesignBasketStore();
   const itemDesignCount = getDesignItemCount(design?._id);
 
-
-  const [isClient, setIsClient] = useState(false);
-
-
-  // update yourself on current hydration and rehydration page rendering.
+// current hydration and rehydration page rendering needs an overview.
   useEffect(() => {
     setIsClient(true);
   }, []);
-
 
   if (!isClient) {
     return null;
   };
 
   return (
-
     <div className='flex items-center justify-center space-x-2'>
       <button
         onClick={() => {
