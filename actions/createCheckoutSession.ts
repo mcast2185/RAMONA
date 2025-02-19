@@ -29,9 +29,9 @@ export async function createCheckoutSession(
     const designsWithoutPrice = items.filter((item) => !item.design?.price);
     const productsWithoutPrice = items.filter((item) => !item.product?.price);
 
-    // if (productsWithoutPrice.length > 0) {
-    //   throw new Error("Some items do not have a price");
-    // };
+    if (productsWithoutPrice.length > 0) {
+      throw new Error("Some items do not have a price");
+    };
 
     // if (designsWithoutPrice.length > 0) {
     //   throw new Error("Some items do not have a price");
@@ -48,11 +48,13 @@ export async function createCheckoutSession(
       customerId = customers.data[0].id;
     };
 
-    const baseUrl = process.env.NODE_ENV === "production" ? `https://${process.env.VERCEL_URL}` : `${process.env.NEXT_PUBLIC_BASE_URL}`
-    const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}$orderNumber=${metadata.orderNumber}`
-    const cancelUrl =  `${baseUrl}/basket`
+    const baseUrl = process.env.NODE_ENV === "production" 
+      ? `https://${process.env.VERCEL_URL}` 
+      : `${process.env.NEXT_PUBLIC_BASE_URL}`;
+    const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}$orderNumber=${metadata.orderNumber}`;
+    const cancelUrl =  `${baseUrl}/basket`;
     
-    console.log("SUCCESS URL: ", successUrl)
+    console.log("SUCCESS URL: ", successUrl);
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,

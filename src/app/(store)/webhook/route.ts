@@ -66,10 +66,6 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     product: {
       _type: "reference",
       _ref: (item.price?.product as Stripe.Product)?.metadata?.id,
-      image: imageUrl((item.price?.product as Stripe.Product)?.images[idx]).url(),
-      name: (item.price?.product as Stripe.Product)?.name ?? "",
-      price: (item.price?.unit_amount ? item.price.unit_amount / 100 : 0),
-      // price: currencyFormatter((item.price?.unit_amount ? item.price.unit_amount / 100 : 0), "USD"),
     },
     quantity: item.quantity || 0,
   }));
