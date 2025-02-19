@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import React from 'react'
 import { imageUrl } from '@/lib/imageUrl';
+import { Order } from '../../../../sanity.types';
 
 async function Orders() {
   const {userId} = await auth();
@@ -30,7 +31,7 @@ async function Orders() {
           </div>
         ) : (
           <div className='space-y-4 sm:space-y-8'>
-            {orders.map((order) => (
+            {orders.map((order: Order) => (
               <div
                 key={order.orderNumber}
                 className='bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden'>
@@ -105,13 +106,52 @@ async function Orders() {
                           {product.product?.image && (
                             <div className='relative h-14 w-14 sm:h-16 sm:w-16 flex-shrink-0 rounded-lg overflow-hidden'>
                               <Image
-                                src={imageUrl(product.product.image).url()}
+                                src={imageUrl(product.product?.image).url()}
                                 alt={product.product?.name ?? ""}
                                 layout='fill'
                                 className='object-cover'/>
                             </div>
                           )}
+                          <div className=''>
+                            <p className='text-sm font-medium sm:text-base'>
+                              {product.product?.name}
+                            </p>
+                            <p className='text-sm text-gray-600'>
+                              Quantity: {product.quantity ?? "N/A"}
+                            </p>
+                          </div>
                         </div>
+                        <p className='font-medium text-right'>
+                          {product.product?.price && product.quantity
+                            ? currencyFormatter(product.product?.price * product.quantity, order.currency) : "N/A"}
+                        </p>
+                      </div>
+                    ))}
+                    {order.designs?.map((design) => (
+                      <div key={design.product?._id} className='flex flex-col'>
+                        <div className='flex items-center gap-3 sm:gap-4'>
+                          {design.product?.image && (
+                            <div className='relative h-14 w-14 sm:h-16 sm:w-16 flex-shrink-0 rounded-lg overflow-hidden'>
+                              <Image
+                                src={imageUrl(design.product?.image).url()}
+                                alt={design.product?.name ?? ""}
+                                layout='fill'
+                                className='object-cover'/>
+                            </div>
+                          )}
+                          <div className=''>
+                            <p className='text-sm font-medium sm:text-base'>
+                              {design.product?.name}
+                            </p>
+                            <p className='text-sm text-gray-600'>
+                              Quantity: {design.quantity ?? "N/A"}
+                            </p>
+                          </div>
+                        </div>
+                        <p className='font-medium text-right'>
+                          {design.product?.price && design.quantity
+                            ? currencyFormatter(design.product?.price * design.quantity, order.currency) : "N/A"}
+                        </p>
                       </div>
                     ))}
                   </div>

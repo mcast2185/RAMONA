@@ -82,19 +82,11 @@ export type Order = {
   stripePaymentIntentId?: string;
   designs?: Array<{
     product?: {
+      _id: string;
       _ref: string;
       _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "product";
-    };
-    quantity?: number;
-    _key: string;
-  }>;
-  products?: Array<{
-    product?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "design";
       image?: {
         asset?: {
           _ref: string;
@@ -107,7 +99,31 @@ export type Order = {
         _type: "image";
       };
       name: string;
+      price: number;
+    };
+    quantity?: number;
+    _key: string;
+  }>;
+  products?: Array<{
+    product?: {
+      _id: string;
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "product";
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      };
+      name: string;
+      price: number;
     };
     quantity?: number;
     _key: string;
@@ -348,7 +364,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/orders/getMyOrders.tsx
 // Variable: MY_ORDERS_QUERY
-// Query: *[_type == "order" && clerkUserId == $userId] | order(orderDate desc) {      ...,      products[]{        ...,        product->      }    }
+// Query: *[_type == "order" && clerkUserId == $userId] | order(orderDate desc) {      ...,      products[]{        ...,        product->      },      // designs[]{      //   ...,      //   product->      // }    }
 export type MY_ORDERS_QUERYResult = Array<{
   _id: string;
   _type: "order";
@@ -367,7 +383,7 @@ export type MY_ORDERS_QUERYResult = Array<{
       _ref: string;
       _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "product";
+      [internalGroqTypeReferenceTo]?: "design";
       image?: {
         asset?: {
           _ref: string;
@@ -380,6 +396,7 @@ export type MY_ORDERS_QUERYResult = Array<{
         _type: "image";
       };
       name: string;
+      price: number;
     };
     quantity?: number;
     _key: string;
@@ -408,11 +425,13 @@ export type MY_ORDERS_QUERYResult = Array<{
         _type: "image";
       };
       name: string;
+      price: number;
     };
     quantity?: number;
     _key: string;
   }>;
 }>;
+
 
 // Source: ./src/sanity/lib/products/getAllCategories.ts
 // Variable: ALL_CATEGORIES_QUERY
@@ -810,7 +829,7 @@ export type PRODUCTS_BY_CATEGORY_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n    *[_type == \"order\" && clerkUserId == $userId] | order(orderDate desc) {\n      ...,\n      products[]{\n        ...,\n        product->\n      }\n    }\n  ": MY_ORDERS_QUERYResult;
+    "\n    *[_type == \"order\" && clerkUserId == $userId] | order(orderDate desc) {\n      ...,\n      products[]{\n        ...,\n        product->\n      },\n      // designs[]{\n      //   ...,\n      //   product->\n      // }\n    }\n  ": MY_ORDERS_QUERYResult;
     "\n      *[\n          _type == \"category\"\n      ] | order(name asc)\n    ": ALL_CATEGORIES_QUERYResult;
     "\n      *[\n          _type == \"design\" \n      ] | order(name asc)\n    ": ALL_DESIGNS_QUERYResult;
     "\n      *[\n          _type == \"product\" \n      ] | order(name asc)\n    ": ALL_PRODUCTS_QUERYResult;

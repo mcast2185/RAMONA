@@ -13,6 +13,10 @@ export async function getMyOrders(userId: string) {
       products[]{
         ...,
         product->
+      },
+      designs[]{
+        ...,
+        product->
       }
     }
   `);

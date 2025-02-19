@@ -14,8 +14,8 @@ export const orderType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "stripeCheckoutSesionId",
-      title: "Stripe Checkout Sesion ID",
+      name: "stripeCheckoutSessionId",
+      title: "Stripe Checkout Session ID",
       type: "string",
     }),
     defineField({
@@ -43,8 +43,71 @@ export const orderType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "stripeCustomerId",
+      title: "Stripe Customer ID",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'designs',
-      title: 'Art&Designs',
+      title: 'Designs',
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: 'object', 
+          fields: [
+            defineField({
+              name: 'product',
+              title: 'Product Purchased',
+              type: "reference",
+              to: [{type: "design"}],
+            }),
+            defineField({
+              name: "quantity",
+              title: "Quantity Purchased",
+              type: "number",
+            }),
+            defineField({
+              name: "name",
+              title: "Product Name",
+              type: "string",
+            }),
+            defineField({
+              name: "price",
+              title: "Item Price",
+              type: "number",
+            }),
+            defineField({
+              name: "image",
+              title: "Product Image",
+              type: "image",
+              options: {
+                hotspot: true
+              },
+            }),
+          ],
+          preview: {
+            select: {
+              product: "product.name",
+              quantity: "quantity",
+              image: "product.image",
+              price: "product.price",
+              currency: "product.currency"
+            },
+            prepare(select) {
+              return {
+                title: `${select.product} x ${select.quantity}`,
+                subtitle: `${select.price * select.quantity}`,
+                media: select.image
+              };
+            },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'products',
+      title: 'Products',
       type: "array",
       of: [
         defineArrayMember({
@@ -60,6 +123,24 @@ export const orderType = defineType({
               name: "quantity",
               title: "Quantity Purchased",
               type: "number",
+            }),
+            defineField({
+              name: "price",
+              title: "Item Price",
+              type: "number",
+            }),
+            defineField({
+              name: "name",
+              title: "Product Name",
+              type: "string",
+            }),
+            defineField({
+              name: "image",
+              title: "Product Image",
+              type: "image",
+              options: {
+                hotspot: true
+              },
             }),
           ],
           preview: {

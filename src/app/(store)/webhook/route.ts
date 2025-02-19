@@ -6,6 +6,7 @@ import stripe from "@/lib/stripe";
 import {backendClient} from "@/sanity/lib/backendClient";
 import { Metadata } from "../../../../actions/createCheckoutSession";
 import { imageUrl } from "@/lib/imageUrl";
+import { currencyFormatter } from "@/sanity/lib/currencyFormatter";
 
 
 export async function POST(req: NextRequest) {
@@ -35,7 +36,6 @@ export async function POST(req: NextRequest) {
   
   if (event.type === "checkout.session.completed") {
     const session = event.data?.object as Stripe.Checkout.Session;
-    
     try {
       const order = await createOrderInSanity(session);
       console.log("Order created in Sanity:", order);
@@ -68,6 +68,8 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
       _ref: (item.price?.product as Stripe.Product)?.metadata?.id,
       image: imageUrl((item.price?.product as Stripe.Product)?.images[idx]).url(),
       name: (item.price?.product as Stripe.Product)?.name ?? "",
+      price: (item.price?.unit_amount ? item.price.unit_amount / 100 : 0),
+      // price: currencyFormatter((item.price?.unit_amount ? item.price.unit_amount / 100 : 0), "USD"),
     },
     quantity: item.quantity || 0,
   }));
