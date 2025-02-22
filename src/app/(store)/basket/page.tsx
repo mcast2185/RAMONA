@@ -10,6 +10,9 @@ import { imageUrl } from '@/lib/imageUrl';
 import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
 import { createCheckoutSession, Metadata } from "../../../../actions/createCheckoutSession";
 import { BasketItem, useDesignBasketStore, useProductBasketStore } from "../../../../store/store";
+import { ArrowDownLeftSquareIcon } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 
 const BasketPage = () => {
@@ -81,6 +84,16 @@ const BasketPage = () => {
             Your basket is empty.
           </p>
         </h1>
+        <div className='flex flex-col w-full p-6 relative'>
+          <button className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 ">
+            <Link href='/' className='flex items-center justify-center text-sm'>
+              <ArrowDownLeftSquareIcon size={32} className='text-white h-5 w-5' />
+              <p className='px-2'>
+                Continue Shopping
+              </p>
+            </Link>
+          </button>
+        </div>
       </div>
     );
   };
@@ -151,12 +164,22 @@ const BasketPage = () => {
           </div>
 
           {isSignedIn ? (
-            <button
-              onClick={handleCheckout}
-              disabled={isLoading}
-              className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400">
-              {isLoading ? "Processing..." : "Checkout"}
-            </button>
+            <div className='flex flex-col w-full p-6 relative'>
+              <button
+                onClick={handleCheckout}
+                disabled={isLoading}
+                className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400 text-sm">
+                {isLoading ? "Processing..." : "Checkout"}
+              </button>
+              <button className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 ">
+                <Link href='/' className='flex items-center justify-center text-sm'>
+                  <ArrowDownLeftSquareIcon size={32} className='text-white h-5 w-5'/>
+                  <p className='px-2'>
+                    Continue Shopping
+                  </p>
+                </Link>
+              </button>
+            </div>
             ): (
             <SignInButton mode="modal">
                 <button className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
@@ -168,6 +191,16 @@ const BasketPage = () => {
         <div className='h-64 lg:h-0'>
           {/* {spacer for fixed checkout on mobile} */}
         </div>
+        {/* <div className='flex flex-row w-full p-6 relative'>
+          <button className="absolute bottom-4">
+            <Link href='/' className='flex flew-col items-center justify-center'>
+              <ArrowDownLeftSquareIcon size={32} className='text-gray-500 mx-auto '/>
+              <p className='text-gray-500 text-sm px-2'>
+                Continue Shopping
+              </p>
+            </Link>
+          </button>
+        </div> */}
       </div>
     </div>
   );
