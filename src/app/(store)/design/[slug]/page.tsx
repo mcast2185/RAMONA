@@ -4,7 +4,7 @@ import { PortableText } from "next-sanity";
 
 import { imageUrl } from "@/lib/imageUrl";
 import { getDesignBySlug } from "@/sanity/lib/products/getDesignBySlug";
-import AddToBasketDesignButton from "@/components/ui/AddToBasketDesignButton";
+import AddToBasketDesignButton from "../../../components/ui/AddToBasketDesignButton";
 
 
 const DesignPage = async (

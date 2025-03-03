@@ -1,0 +1,242 @@
+@keyframes menuBurgerEffect {
+  0% {
+    border-bottom: 2px solid #fff;
+
+  }
+  50% {
+    border-bottom: 2px solid #6a4196;
+  }
+  100% {
+    border-bottom: 2px solid #5d1da1;
+
+  }
+}
+
+
+
+.menuBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 9vw;
+  height: 12.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  z-index: 1;
+  /* background: #000; */
+  /* border: 1px solid; */
+  /* border-left: 1px solid #fff; */
+}
+
+/* .menuBar,  */
+.menuBar,
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 9vw;
+  height: 12.5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  z-index: 20;
+
+}
+
+
+
+.menuOverlayBar {
+  height: 100%;
+}
+
+.menuBar a,
+.menuOpen .menuOpenLogo {
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.menuOpen {
+
+}
+/* this the location where we intend to place the two murger icons alongside one another in order to replicate the hidden animation */
+.menuBurger {
+    /* height: 50px; */
+    /* width: 65px; */
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+    /* overflow: hidden; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+
+}
+
+
+
+
+
+.menuBurgerDefault {
+  /* height: 100%;
+  width: 100%; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-evenly;
+  align-items: center; */
+
+
+}
+
+
+
+
+
+/* .num3, .num6 {
+  height: 2px;
+  width: 70%;
+  display: flex;
+  animation: menuBurgerEffect;
+  animation-duration: 1.2s;
+  transition-timing-function: ease;
+  border-bottom: 2px solid #fff;
+} */
+
+
+.num1, .num2, .num3 {
+  animation-duration: 1.2s;
+  transition-timing-function: ease;
+  border-bottom: 2px solid #d0b20b;
+
+}
+
+
+.num4, .num5, .num6 {
+  animation-duration: 1.2s;
+  transition-timing-function: ease;
+  border-bottom: 2px solid #fff;
+}
+
+.num4:hover, .num5:hover, .num6:hover {
+  /* animation: menuBurgerEffect; */
+  animation-duration: .5s;
+  transition-timing-function: ease;
+  border-bottom: 2px solid #fff;
+
+
+}
+
+/* .menuBurgerLine {
+  height: 2px;
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+} */
+
+.menuOpenLogo {
+  width: 9vw;
+  height: 180px;
+}
+
+.menuClose a {
+  color: #fff;
+  cursor: pointer;
+}
+
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+  background: #5d1da1;
+  z-index: 2;
+  display: flex;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+.menuCloseIcon {
+  flex: 2;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  
+}
+
+.menuCloseIcon {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2em;
+  height: 100%;
+}
+
+.menuCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.menuPreview {
+  flex: 4;
+  z-index: 30;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.menuCloseIcon p {
+  font-size: 100px;
+  -webkit-text-stroke: 5px #5d1da1;
+  line-height: 70%;
+  
+}
+
+
+.menuLinkItem {
+  width: max-content;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.menuLinkContainer {
+  position: relative;
+}
+
+.menuLinkContainer h1 {
+  color: #000;
+  font-size: 80px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 85%;
+}
+
+.menuInfo {
+  display: flex;
+}
+
+.menuInfoCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .menuCloseIcon {
+    display: none;
+
+  }
+
+  .menuCopy {
+    padding-top: 8em;
+
+  }
+
+  .menuLinkContainer a {
+    font-size: 60px;
+  }
+}

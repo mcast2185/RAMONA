@@ -4,7 +4,7 @@ import { PortableText } from "next-sanity";
 
 import { imageUrl } from "@/lib/imageUrl";
 import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
-import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
+import AddToBasketProductButton from "../../../../components/ui/AddToBasketProductButton";
 
 export const dynamic = "force-static";
 export const revalidate = 60;

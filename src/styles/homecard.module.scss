@@ -1,0 +1,110 @@
+
+.homeAboutWorkshop {
+    background-color: #f3efec;
+    box-sizing: border-box;
+    // height: 300px;
+    margin: 100px auto 0 auto;
+    position: relative;
+    text-align: center;
+    width: 260px;
+    .homeAboutWorkshopLeft {
+        display: inline-block;
+        left: 0;
+        line-height: 1;
+        margin-top: -1rem;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-100%);
+        transition: transform 0.75s;
+        vertical-align: middle;
+        &:after {
+            background-color: rgb(162, 162, 162);
+            content: '';
+            display: inline-block;
+            height: 1px;
+            margin-left: 5px;
+            margin-top: -2px;
+            vertical-align: middle;
+            width: 140px;
+        }
+    }
+    .homeAboutWorkshopRight {
+        display: inline-block;
+        line-height: 1;
+        margin-top: -1rem;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateX(100%);
+        transition: transform 0.75s;
+        vertical-align: middle;
+        &:before {
+            background-color: rgb(162, 162, 162);
+            content: '';
+            display: inline-block;
+            height: 1px;
+            margin-right: 5px;
+            margin-top: -2px;
+            vertical-align: middle;
+            width: 140px;
+        }
+    }
+    &:hover {
+        .homeAboutWorkshopLeft {
+            transform: translateX(-85.75%);
+        }
+        .homeAboutWorkshopRight {
+            transform: translateX(88.5%);
+        }
+    }
+    // &:hover {
+    //     .homeAboutWorkshop__title {
+    //         display: none;
+    //     }
+    //     .homeAboutWorkshop__button {
+    //         opacity: 1;
+    //         transform: translateY(-50%);
+    //         visibility: visible;
+    //     }
+    // }
+}
+
+// .homeAboutWorkshop__image {
+//     background-color: rgb(27, 27, 27);
+//     border: 40px solid #f3efec;
+//     box-sizing: border-box;
+//     cursor: pointer;
+//     height: 100%;
+//     position: relative;
+//     z-index: 2;
+// }
+
+// .homeAboutWorkshop__button {
+//     margin: 0 auto;
+//     opacity: 0;
+//     transform: translateY(40px);
+//     visibility: hidden;
+//     width: 230px;
+// }
+
+// .homeAboutWorkshop__title {
+//     color: #e2e8f0;
+//     font-size: 70px;
+//     span {
+//         display: inline-block;
+//         position: relative;
+//         &:after {
+//             background-color: #e2e8f0;
+//             bottom: 10px;
+//             content: '';
+//             display: block;
+//             height: 1px;
+//             left: 0;
+//             position: absolute;
+//             right: 0;
+//             width: 100%;
+//         }
+//     }
+// }

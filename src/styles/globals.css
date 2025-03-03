@@ -1,0 +1,152 @@
+@import "../styles/imageRevealer.css";
+@import "../styles/menu.css";
+@import "../styles/ParallaxImgAnimation.css";
+@import "../styles/PortfolioImg.css";
+@import "../styles/scrollAnimation.css";
+@import "../styles/three.module.css";
+@import "../styles/transition.module.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Petit+Formal+Script&family=Belanosima:wght@400;600;700&family=Imbue:opsz,wght@10..100,100..900&display=swap&family=Inter:wght@100;200;300;400;500&family=Megrim&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Pinyon+Script&family=Poiret+One&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .link {
+    @apply cursor-pointer hover:underline;
+  }
+  
+  .button {
+    @apply p-2 text-xs md:text-sm bg-gradient-to-b from-gray-200 to-gray-400 border border-gray-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-yellow-500 active:from-yellow-500
+  }
+}
+
+@layer base {
+  body {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    --yellow: #d0b20b;
+    --purple: #400578;
+    --divider: #343434;
+    --secondary: rgb(161, 161, 161);
+  }
+}
+
+@layer base {
+  h1, 
+  h2, 
+  h3, 
+  h4 {
+    display: inherit;
+    vertical-align: text-top;
+  }
+}
+
+
+
+@layer components {
+  .link {
+    @apply cursor-pointer hover:underline;
+  }
+  
+  .button {
+    @apply p-2 text-xs md:text-sm bg-gradient-to-b from-gray-200 to-gray-400 border border-gray-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-yellow-500 active:from-yellow-500
+  }
+}
+
+
+@supports((text-stroke: 2px black) or (-webkit-text-stroke: 2px black)) {
+  .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px black;
+		text-stroke: 2px black;
+    text-shadow: none;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+
+
+.main-cursor,
+.secondary-cursor {
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+}
+
+.main-cursor {
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.main-cursor-background {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.secondary-cursor {
+  width: 60px;
+  height: 60px;
+}
+
+.cursor-background {
+  mix-blend-mode: difference;
+  filter: invert(1);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #000;
+  position: relative;
+}
+
+.cursor-background::after, 
+.cursor-background::before {
+  content: "";
+  border-radius: 50%;
+  background: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-background::before {
+  left: 10px;
+}
+
+.cursor-background::after {
+  right: 10px;
+}
+
+.slider-drag
+.cursor-background {
+  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+  bgUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .cursor-background::after {
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+    translateRightDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .cursor-background::before {
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+    translateLeftDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .main-cursor {
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}

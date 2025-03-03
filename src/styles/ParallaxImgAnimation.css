@@ -1,0 +1,138 @@
+/* color-1-1: #5d1da1 */
+/* color-1-2: #344C64 */
+
+* {
+  box-sizing: border-box;
+  font-feature-settings: "pnum" on, "lnum" on;
+}
+
+.parallax-wrapper {
+  position: relative;
+  weight: 100%;
+  height: auto;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.content {
+  width: 100%;
+  height: auto;
+}
+
+.parallax-spacer {
+  width: 100%;
+  height: 50vh;
+  background: #ddd;
+
+}
+
+.parallax-work {
+  display: flex;
+}
+
+.parallax-work-left {
+  position: relative;
+  width: 54%;
+  z-index: 2;
+}
+
+.parallax-work-text {
+  margin: auto;
+  width: 80%;
+
+}
+
+.parallax-work-info {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.parallax-work-num {
+  display: block;
+  line-height: .9;
+  text-align: right;
+  font-size: 18px;
+  transform: skewX(-20deg);
+  color: #5d1da1;
+}
+
+.parallax-title {
+  text-align: right;
+  font-size: 70px;
+  text-transform: uppercase;
+  color: #fff; 
+}
+
+.parallax-title .parallax-stroke {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+}
+
+
+.parallax-work-link {
+  display: block;
+  width: 365px;
+  margin-top: 50px;
+  margin-left: auto;
+  padding: 18px 0;
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 4px;
+  border: 2px solid #5d1da1;
+  border-radius: 30px;
+  transition: .4s;
+}
+
+.parallax-work-link:hover {
+  background: #5d1da1;
+  color: #344C64;
+  letter-spacing: 6px;
+
+}
+
+.parallax-work-right {
+  width: 46%;
+  height: auto;
+
+}
+
+.parallax-work-right-b1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+
+}
+
+
+.parallax-work-photo {
+  width: 40vw;
+  height: 30vh;
+  position: relative;
+
+}
+
+.parallax-work-photo-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 80px;
+  overflow: hidden;
+}
+
+.parallax-work-photo-item .parallax-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

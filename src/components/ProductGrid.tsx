@@ -9,7 +9,7 @@ import {Product} from "../../sanity.types";
 function ProductGrid({products}: {products: Product[]}) {
   // remove gap an margin once integrated and remove css from motion.div
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+    <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4 mt-4">
       {products?.map((product) => (
         <AnimatePresence key={product._id}>
           <motion.div

@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SignInButton, useAuth, useUser } from "@clerk/nextjs";
 
-import Loader from "@/components/Loader";
+import Loader from "../../../components/Loader";
 import { imageUrl } from '@/lib/imageUrl';
-import AddToBasketProductButton from "@/components/ui/AddToBasketProductButton";
+import AddToBasketProductButton from "../../../components/ui/AddToBasketProductButton";
 import { createCheckoutSession, Metadata } from "../../../../actions/createCheckoutSession";
 import { BasketItem, useDesignBasketStore, useProductBasketStore } from "../../../../store/store";
 import { ArrowDownLeftSquareIcon } from "lucide-react";
-import { Button } from '@/components/ui/button';
+import { Button } from '../../../components/ui/button';
 import Link from 'next/link';
 
 
@@ -164,14 +164,14 @@ const BasketPage = () => {
           </div>
 
           {isSignedIn ? (
-            <div className='flex flex-col w-full p-6 relative'>
+            <div className='flex flex-col w-full p-6 relative justify-center items-center'>
               <button
                 onClick={handleCheckout}
                 disabled={isLoading}
-                className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400 text-sm">
+                className="mt-4 w-[35%] xl:w-[50%] lg:w-[80%] sm:w-full md:w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400 text-sm">
                 {isLoading ? "Processing..." : "Checkout"}
               </button>
-              <button className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 ">
+              <button className="mt-4 w-[35%] xl:w-[50%] lg:w-[80%] sm:w-full md:w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 ">
                 <Link href='/' className='flex items-center justify-center text-sm'>
                   <ArrowDownLeftSquareIcon size={32} className='text-white h-5 w-5'/>
                   <p className='px-2'>
