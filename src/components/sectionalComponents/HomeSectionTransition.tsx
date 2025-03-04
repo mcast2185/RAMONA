@@ -1,6 +1,6 @@
 const HomeSectionTransition = () => {
   return (
-    <div className='sm:hidden sm:h-0 sm:w-0 sm:bg-none sm:transparent'>
+    <div className='sm:hidden sm:h-0 sm:w-0'>
       <section className="pinned" aria-details='scroll-about section'>
         <div className="revealer">
           <div className="revealer-1"></div>

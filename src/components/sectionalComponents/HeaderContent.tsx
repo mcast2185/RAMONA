@@ -1,6 +1,6 @@
 const HeaderContent = () => {
   return (
-    <section className='header-content relative w-full h-[80%] flex flex-row justify-between bg-black text-white z-10 sm:hidden sm:h-0 sm:w-0 sm:bg-none sm:text-transparent' aria-details='mission statement section'>
+    <section className='header-content relative w-full h-[80%] flex flex-row justify-between bg-black text-white z-10 sm:hidden sm:h-0 sm:w-0' aria-details='mission statement section'>
       <div className='w-[80vw] flex flex-row relative mx-[5%] pr-2'>
         <div className=' flex items-end flex-col'>
 

@@ -58,13 +58,15 @@ function Header() {
                 </div>
               </div>
               ): (
-              <SignInButton mode='modal'/>
+                <div className='text-[--yellow]'>
+                  <SignInButton mode='modal'/>
+                </div>
             )}
 
             {user?.passkeys.length === 0 && (
               <button 
                 onClick={createPassKey}
-                className='bg-white hover:bg-slate-400 hover:text-yellow-400 animate-pulse rounded border-yellow-400'>
+                className='bg-white hover:bg-slate-400 hover:text-[--yellow] animate-pulse rounded border-[--yellow]'>
                 create a passkey now
               </button>
             )}

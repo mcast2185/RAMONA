@@ -11,7 +11,7 @@ const ContactInfo = () => {
   const router = useRouter();
 
   return (
-    <div className="h-[100vh] w-[100vw] bg-transparent pr-[9vw] sm:pr-0">
+    <div className="h-[100vh] w-[100vw] bg-transparent pr-[9vw] sm:pr-0 sm:bg-[--purple]">
       <div className='pt-[5vh] w-full sm:flex sm:flex-col'>
         <div className='flex flex-row items-center justify-end '>
           <p className="text-[2.5rem] sm:text-xl cursor-default font-PoiretOne text-[--yellow] sm:px-2">
@@ -30,8 +30,8 @@ const ContactInfo = () => {
               </h1>
               {/* </motion.div> */}
             </div>
-            <div className="flex w-[29vw] sm:w-[50vw] h-[30vh] items-end p-5 sm:p-1">
-              <p className='font-Inter font-light text-xl leading-10 text-gray-200 sm:w-[45vw] sm:ml-[5vw] cursor-default'>
+            <div className="flex w-[29vw] sm:w-[60vw] h-[30vh] items-end p-5 sm:p-1">
+              <p className='font-Inter font-light sm:text-3xl sm:tracking-widest text-xl sm:leading-[40px] leading-10 text-gray-200 sm:w-[50vw] sm:ml-[5vw] cursor-default'>
                 Reimagine through artistic perspective. Set up a consultation.
               </p>
             </div>
@@ -47,9 +47,9 @@ const ContactInfo = () => {
                 </div>
               </span>
             </div>
-            <div className='absolute right-[10vw] sm:right-[5vw] flex flex-row w-[50vw] sm:w-[20vw] justify-evenly m-[5rem]'>
-              <div className='flex flex-col justify-between'>
-                <h2 className='font-Inter font-bold text-md text-gray-200 cursor-default'>
+            <div className='absolute right-[10vw] sm:right-[5vw] sm:text-2xl flex flex-row w-[50vw] sm:w-[22vw] justify-evenly m-[5rem]'>
+              <div className='flex flex-col justify-between sm:w-[40vw]'>
+                <h2 className='font-Inter font-bold text-md text-gray-200 cursor-default sm:w-[55px]'>
                   Social Media
                 </h2>
                 <div className='flex flex-col text-gray-200 py-4'>

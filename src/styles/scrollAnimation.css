@@ -45,12 +45,12 @@ section.info {
 
 } */
 
-.header-row {
+/* .header-row {
   width: 100%;
   height: 250px;
   padding: 0 2em;
   color: #fff;
-}
+} */
 
 .header-row:nth-child(1) {
   display: flex;
@@ -259,7 +259,7 @@ section.whitespace-2 {
 
 section.header-content-2 {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 150vh;
   background-color: #fff;
   z-index: 20;

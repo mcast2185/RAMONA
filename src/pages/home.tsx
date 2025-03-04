@@ -1,6 +1,3 @@
-"use client";
-
-import React, {useState, useEffect} from 'react';
 import HeaderContent from '@/components/sectionalComponents/HeaderContent';
 import SpaceBackground from '../components/animatedComponents/SpaceBackground';
 import AboutHomeSection from '../components/sectionalComponents/AboutHomeSection';
@@ -10,17 +7,6 @@ import PortfolioImageRevealer from '../components/sectionalComponents/PortfolioI
 
 
 export default function Home() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 568);
-    };
-    // window.addEventListener('resize', (e) => handleResize());
-
-    // handleResize();
-    // return () => window.removeEventListener('resize', (e) => handleResize());
-  }, []);
 
   return (
     <div className="w-screen bg-transparent relative cursor-default">
@@ -34,12 +20,12 @@ export default function Home() {
         </section>
         <section className="info font-inter" aria-details='header section'>
           <div className="header-rows">
-            <div className="header-row flex flex-row">
+            <div className="header-row flex flex-row py-0 px-[2em] sm:px-[1em] w-full h-[250px] sm:h-[175px] text-[#fff]">
               <h1 id="h-1" className="sa-h1 font-[700] sm:!text-[70px]">inspired</h1>
               <h3 id="h-3" className="sa-h1 font-Megrim italic sm:text-[16px] uppercase">design</h3>
             </div>
-            <div className="header-row flex flex-row">
-              <h3 id="h-4" className="sa-h1 font-inter font-[700] tracking-[.25rem] uppercase sm:text-[16px]">design</h3>
+            <div className="header-row flex flex-row py-0 px-[2em] sm:px-[1em] w-full h-[250px] sm:h-[175px] text-[#fff]">
+              <h3 id="h-4" className="sa-h1 font-inter font-[700] tracking-[.25rem] sm:tracking-[.10rem] uppercase sm:text-[16px]">design</h3>
               <h1 id="h-2" className="sa-h1 font-Megrim italic -skew-x-12 font-[300] sm:!text-[60px]">perspective</h1>
             </div>
           </div>
@@ -47,7 +33,7 @@ export default function Home() {
         </section>
         <HeaderContent />
         <ImgScrollAnimation />
-        <section className="whitespace bg-gradient-to-b from-black to-transparent"></section>
+        <section className="whitespace bg-gradient-to-b from-black to-transparent sm:hidden sm:h-0 sm:w-0"></section>
         <HomeSectionTransition />
         <AboutHomeSection />
       </div>

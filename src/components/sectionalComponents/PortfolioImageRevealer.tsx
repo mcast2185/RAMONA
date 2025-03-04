@@ -117,7 +117,7 @@ const PortfolioImageRevealer = () => {
 
   return (
     <div className='Portfolio-image-reveal-wrapper font-inter px-[10%] cursor-default'>
-      <div className="Portfolio-image-reveal-container">
+      <div className="Portfolio-image-reveal-container mt-[10vh] w-full">
         
         <div className="Portfolio-image-row" id="Portfolio-image-row-1">
           <div className="Portfolio-image-col">
@@ -148,96 +148,71 @@ const PortfolioImageRevealer = () => {
           <div className="Portfolio-image-col"></div>
           <div className="Portfolio-image-col-two h-[500px] w-screen flex flex-row justify-end sm:justify-center z-10">
             <div className="Portfolio-image-container-two Portfolio-image-left-two w-screen flex sm:flex-col sm:justify-center sm:items-start">
-              {/* <div className='relative h-[275px] w-[5vw] pt-[2px] overflow-hidden flex flex-col sm:h-[50px] sm:w-[35vw] gap-[2rem] items-start justify-end sm:justify-center sm:items-start '>
-                <div className='Portfolio-image-p-tag-two flex flex-col h-[275px] w-[5vw] sm:w-[35vw] sm:h-[50px] justify-end items-start pt-1 sm:pb-0 sm:flex-row'>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
-                    <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={LINKEDIN} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
-                    </Link>
-                  </div>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
-                    <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={TWITTER} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
-                    </Link>
-                  </div>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
-                    <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={FACEBOOK} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
-                    </Link>
-                  </div>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
-                    <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={INSTAGRAM} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
-                    </Link>
-                  </div>
-                </div>
-              </div> */}
 
-              <div className='w-[80vw] h-[300px] grid  justify-end items-end flex-col relative pr-2'>
+              <div className='w-[80vw] h-[300px] flex justify-end items-end flex-col relative pr-2'>
 
-                <div className='sm:w-full sm:h-[60px] sm:flex sm:flex-row sm:items-center sm:justify-between'>
-                  <div className='relative h-[275px] w-[5vw] pt-[2px] overflow-hidden flex flex-col sm:h-[50px] sm:w-[35vw] gap-[2rem] items-start justify-end sm:justify-between sm:items-start '>
-                    <div className='Portfolio-image-p-tag-two flex flex-col h-[275px] w-[5vw] sm:w-[35vw] sm:h-[50px] justify-end items-start pt-1 sm:pb-0 sm:flex-row'>
-                      <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                <div className='sm:w-full sm:h-[60px] sm:flex sm:flex-row sm:items-center sm:justify-between flex flex-row justify-between  w-[80vw]'>
+                  <div className='relative pt-[2px] overflow-hidden flex flex-col h-[50px] sm:h-[50px] pb-8 sm:pb-0 w-[35vw] sm:w-[35vw] gap-[2rem] items-start justify-start sm:justify-start '>
+                    <div className='Portfolio-image-p-tag-two flex flex-row h-[275px] w-[30vw] sm:w-[35vw] sm:h-[50px] justify-start sm:justify-end items-start pt-1 pb-0'>
+                      <div className='relative h-[60px] w-[10%] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] justify-center items-start sm:w-[100%]'>
                         <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
                           <Image src={LINKEDIN} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                         </Link>
                       </div>
-                      <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                      <div className='relative h-[60px] w-[10%] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] justify-center items-start sm:w-[100%]'>
                         <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
                           <Image src={TWITTER} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                         </Link>
                       </div>
-                      <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                      <div className='relative h-[60px] w-[10%] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] justify-center items-start sm:w-[100%]'>
                         <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
                           <Image src={FACEBOOK} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                         </Link>
                       </div>
-                      <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                      <div className='relative h-[60px] w-[10%] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] justify-center items-start sm:w-[100%]'>
                         <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
                           <Image src={INSTAGRAM} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                         </Link>
                       </div>
                     </div>
                   </div>
-                <div className='Portfolio-button w-[11vw] pb-[5px] flex justify-end items-end'>
-                  <AnimatedButton toggleModal text="Hire Me!" border="#e5e7eb" color="#d0b20b"/>
+                  <div className='Portfolio-button w-[11vw] sm:w-[125px] pb-[5px] flex justify-end items-end '>
+                    <AnimatedButton toggleModal text="Hire Me!" border="#e5e7eb" color="#d0b20b"/>
+                  </div>
                 </div>
-                </div>
-                
-                <div className='h-[1px] w-full border-b border-slate-200 mb-[25px]'></div>
-                <div>
-                  <h3 className="text-slate-200 text-4xl">
-                    [aes·thet·ic]
-                  </h3>
-                </div>
+                  
+                  <div className='h-[1px] w-full border-b border-slate-200 mb-[25px]'></div>
+                  <div>
+                    <h3 className="text-slate-200 text-4xl">
+                      [aes·thet·ic]
+                    </h3>
+                  </div>
               </div>
 
-              {/* <div className='relative h-[275px] w-[5vw] pt-[2px] overflow-hidden flex flex-col sm:h-[50px] sm:w-[35vw] gap-[2rem] items-start justify-end sm:justify-center sm:items-start '>
+              {/* <div className='relative h-[275px] w-[5vw] pt-[2px] overflow-hidden flex flex-col sm:h-[50px] pb-8 sm:pb-0 sm:w-[35vw] gap-[2rem] items-start justify-end sm:justify-between sm:items-start '>
                 <div className='Portfolio-image-p-tag-two flex flex-col h-[275px] w-[5vw] sm:w-[35vw] sm:h-[50px] justify-end items-start pt-1 sm:pb-0 sm:flex-row'>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                  <div className='relative h-[60px] w-[35px] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
                     <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={LINKEDIN} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit"/>
+                      <Image src={LINKEDIN} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                     </Link>
                   </div>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                  <div className='relative h-[60px] w-[35px] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
                     <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={TWITTER} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit"/>
+                      <Image src={TWITTER} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                     </Link>
                   </div>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                  <div className='relative h-[60px] w-[35px] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
                     <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={FACEBOOK} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit"/>
+                      <Image src={FACEBOOK} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                     </Link>
                   </div>
-                  <div className='relative h-[60px] w-[35px] pt-[2px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
+                  <div className='relative h-[60px] w-[35px] pt-[17px] sm:pt-[35px] overflow-hidden flex flex-col gap-[2rem] items-start sm:justify-center sm:items-start sm:w-[100%]'>
                     <Link className='h-[8vh] sm:h-[70px] w-[30px] sm:w-[25px] cursor-pointer' href="/">
-                      <Image src={INSTAGRAM} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit"/>
+                      <Image src={INSTAGRAM} alt="" className="h-full w-full flex justify-start items-start ease-in duration-500 transition-all delay-150 hover:translate-y-[-48px] text-[#a7a7a7] hover:text-inherit" />
                     </Link>
                   </div>
                 </div>
               </div> */}
-
             </div>
           </div>
         </div>

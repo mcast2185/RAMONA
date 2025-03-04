@@ -10,26 +10,26 @@ import styles from "../../styles/homecard.module.scss";
 const AboutHomeSection = () => {
   return (
     <div className=''>
-      <section className='header-content-2 px-[4.6em]' aria-details='about section'>
-        <div id="about" className="relative min-h-screen w-[100vw] h-[150vh] sm:mb-0 sm:px-[10vw] pr-[20vw] px-[10vw]">
-          <div className='relative mt-[10vh] sm:mt-2 mb-4 sm:mb-0 h-[150vh] 
-            sm:h-[75%] w-[70vw] bg-[#fff] mx-auto flex flex-col justify-evenly sm:pt-8'>
-            <div className=' w-full lg:mx-auto sm:px-0 sm:mb-[4vh] flex flex-col  leading-[9rem] sm:scale-[.95]'>
-              <div className='sm:h-[5vh] h-[25vh] sm:leading-[1] mt-[5vh] cursor-default 
-                flex flex-col justify-start items-center lg:w-[100%] lg:tracking-[.19rem] lg:leading-[9rem]'>
-                <p className="font-PoiretOne text-[12.5px] tracking-widest font-bold">ANOMAR</p>
-                <div style={{ position: 'relative', flexDirection: 'column' }}>
-                  <div className=' relative flex flex-row h-full w-full tracking-[1.55] pr-[25px] sm:pr-0'>
-                    <h1 className=' font-Imbue sm:text-[1.85rem] md:text-[5rem] text-[2.75rem] font-[500] italic'>
+      <section className='header-content-2 px-[4.6em] sm:px-0' aria-details='about section'>
+        <div id="about" className="relative min-h-screen w-[100vw] h-[150vh] sm:mb-0 sm:px-0 sm:pr-0 pr-[20vw] px-[10vw]">
+          <div className='relative mt-[10vh] sm:mt-0 mb-4 sm:mb-0 h-[150vh] 
+            sm:h-[75%] w-[70vw] sm:w-sceen bg-[#fff] mx-auto sm:mx-0 flex flex-col justify-evenly sm:pt-8'>
+            <div className=' w-full lg:mx-auto sm:px-0 sm:mb-[4vh] flex flex-col sm:flex sm:justify-center sm:w-screen leading-[9rem] sm:scale-[.95]'>
+              <div className='sm:h-[5vh] h-[25vh] sm:leading-[1] mt-[5vh] cursor-default sm:w-screen
+                flex flex-col justify-start sm:justify-center items-center sm:items-center lg:w-[100%] lg:tracking-[.19rem] lg:leading-[9rem]'>
+                <p className="font-PoiretOne text-[12.5px] sm:w-[25vw] sm:text-[35px] tracking-widest font-bold">ANOMAR</p>
+                <div style={{ position: 'relative', flexDirection: 'column', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div className=' relative flex flex-row h-full w-full tracking-[1.55] pr-[25px] sm:pr-0 sm:justify-center'>
+                    <h1 className=' font-Imbue md:text-[5rem] text-[2.75rem] sm:text-[55px] font-[500] italic'>
                       AESTHETIC
                     </h1>
                     <div>
-                      <span className="flex flex-row h-full  px-4 text-[2.2rem] decoration-slate-200 tracking-[1] hover:scale-[1.1]
-                        decoration-2 underline-offset-[6px] font-PinyonScript font-thin sm:text-[1.2rem] md:text-[1.8rem] text-[--yellow] hover:duration-[1500ms] hover:ease-out">
-                        {" "}Driven{" "}
+                      <span className="flex flex-row h-full  px-3 text-[2.2rem] decoration-slate-200 tracking-[1] hover:scale-[1.1]
+                        decoration-2 underline-offset-[6px] font-PinyonScript font-thin sm:text-[2.2rem] md:text-[1.8rem] text-[--yellow] hover:duration-[1500ms] hover:ease-out">
+                        {"  "} Driven{" "}
                       </span>
                     </div>
-                    <h1 className=' font-Imbue text-[2.75rem] sm:text-[1.85rem] md:text-[2rem] font-[500] italic'>
+                    <h1 className=' font-Imbue text-[2.75rem] sm:text-[55px] md:text-[2rem] font-[500] italic'>
                       RESULTS
                     </h1>
                   </div>

@@ -15,8 +15,8 @@ import IMG8 from "../../../public/images/shop_images/tunnelLights.jpg";
 const ImgScrollAnimation = () => {
 
   return (
-    <div>
-      <section className="imageScrollAnimation-container flex flex-col scroll-smooth sm:hidden sm:h-0 sm:w-0 sm:bg-none sm:text-transparent">
+    <div className='sm:hidden sm:h-0 sm:w-0'>
+      <section className="imageScrollAnimation-container flex flex-col scroll-smooth ">
         <div className="header-images scroll-smooth">
           <div className="sa-img-wrapper">
             <Image src={IMG1} alt="" className="sa-image"  />

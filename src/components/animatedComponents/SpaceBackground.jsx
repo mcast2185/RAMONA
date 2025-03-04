@@ -126,8 +126,8 @@ const SpaceBackground = () => {
 
   return (
     <Suspense>
-      <div className="threeJS w-[100vw] overflow-hidden sm:max-w-[400px]">
-        <canvas priority className="webgl -z-[20] fixed top-0 left-0 bottom-0" />
+      <div className="threeJS w-[100vw] overflow-hidden ">
+        <canvas priority="true" className="webgl -z-[20] fixed top-0 left-0 bottom-0" />
       </div>
     </Suspense>
   );
